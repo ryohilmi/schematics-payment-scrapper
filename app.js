@@ -73,8 +73,25 @@ async function getSettlement() {
       }
     }
 
+    const bulan = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+
     let res = arrayfilter.map((el, i) => ({
-      date: el[0],
+      date: `${el[0].split("/")[0]} ${
+        bulan[parseInt(el[0].split("/")[1]) - 1]
+      } 2022`,
       desc: el[1],
       value: parseInt(el[2].replace(/\,/g, "")),
     }));
