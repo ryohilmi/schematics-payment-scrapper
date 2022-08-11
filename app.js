@@ -45,8 +45,8 @@ async function getSettlement() {
       }
     );
 
-    await page.type("#userid_sebenarnya", process.env.USERID, { delay: 100 });
-    await page.type("#pwd_sebenarnya", process.env.PASSWORD, { delay: 100 });
+    await page.type("#userid_sebenarnya", process.env.USERID, { delay: 20 });
+    await page.type("#pwd_sebenarnya", process.env.PASSWORD, { delay: 20 });
     await page.click("#btnSubmit");
 
     await page.waitForNavigation({
@@ -69,7 +69,6 @@ async function getSettlement() {
         return el != "-";
       });
       if (filtered.length > 0) {
-        console.log(filtered);
         arrayfilter.push(filtered);
       }
     }
@@ -79,6 +78,22 @@ async function getSettlement() {
       desc: el[1],
       value: parseInt(el[2].replace(/\,/g, "")),
     }));
+
+    res = res.filter((el) => {
+      let val = el["value"];
+
+      if (process.argv[2] == "nlc") {
+        return val > 150000 && val < 155000;
+      } else if (process.argv[2] == "npc" && process.argv[3] == "senior") {
+        return val > 120000 && val < 125000;
+      } else if (process.argv[2] == "npc" && process.argv[3] == "junior") {
+        return val > 50000 && val < 55000;
+      } else if (process.argv[2] == "nst") {
+        return val % 60000 < 5000;
+      } else {
+        return true;
+      }
+    });
 
     csvWriter
       .writeRecords(res)
