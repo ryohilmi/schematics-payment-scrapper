@@ -1,6 +1,6 @@
 # schematics-payment-scrapper
 
-## How to run
+## How to run (Mandiri Scrapper)
 
 - Clone the repo
   `git clone https://github.com/ryohilmi/schematics-payment-scrapper.git`
@@ -19,3 +19,10 @@
 | npc junior | 50.000           |
 | nlc        | 150.000          |
 | nst        | kelipatan 60.000 |
+
+## How to run (Gobiz)
+
+- Download the csv from Gobiz and rename it to `qris.csv`
+- Install pandas `pip install pandas`
+- Create `filtered` folder
+- Run `qris.py`
