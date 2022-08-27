@@ -3,9 +3,12 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const csvWriter = createCsvWriter({
   path: "out.csv",
   header: [
-    { id: "date", title: "Data" },
-    { id: "desc", title: "Description" },
-    { id: "value", title: "Value" },
+    { id: "date", title: "Tanggal" },
+    { id: "jam", title: "Jam" },
+    { id: "jenisPembayaran", title: "Jenis Pembayaran" },
+    { id: "value", title: "Nominal" },
+    { id: "bank", title: "Bank Pengirim" },
+    { id: "desc", title: "Keterangan" },
   ],
 });
 
@@ -92,9 +95,14 @@ async function getSettlement() {
       date: `${el[0].split("/")[0]} ${
         bulan[parseInt(el[0].split("/")[1]) - 1]
       } 2022`,
-      desc: el[1],
+      jam: "",
+      jenisPembayaran: "Mandiri",
+      bank: "",
       value: parseInt(el[2].replace(/\,/g, "")),
+      desc: el[1],
     }));
+
+    console.log(res);
 
     res = res.filter((el) => {
       let val = el["value"];
