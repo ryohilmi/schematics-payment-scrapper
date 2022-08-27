@@ -180,9 +180,7 @@ const konfigbrowser = {
     throw new Error("Timed out");
   }
 
-  let accounts = csvToJson
-    .fieldDelimiter(",")
-    .getJsonFromCsv("akun-sampang.csv");
+  let accounts = csvToJson.fieldDelimiter(",").getJsonFromCsv(process.argv[2]);
 
   for (let i = 0; i < accounts.length; i++) {
     let account = accounts[i];
