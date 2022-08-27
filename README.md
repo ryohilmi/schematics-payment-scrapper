@@ -26,3 +26,12 @@
 - Install pandas `pip install pandas`
 - Create `filtered` folder
 - Run `qris.py`
+
+## How to run (Buat akun)
+
+- Create account list csv file
+  ![format csv](https://cdn.discordapp.com/attachments/978272595214475276/1013148631152480326/unknown.png)
+- Run the program
+  ```
+  node buat-akun.js [namafile.csv]
+  ```
